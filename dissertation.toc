@@ -1,0 +1,25 @@
+\contentsline {chapter}{LIST OF FIGURES}{7}{chapter*.6}
+\contentsline {chapter}{LIST OF TABLES}{8}{chapter*.7}
+\contentsline {chapter}{ABSTRACT}{9}{chapter*.8}
+\contentsline {chapter}{CHAPTER \numberline {1}INTRODUCTION}{10}{chapter.1}
+\contentsline {section}{\numberline {1.1}Systems Of Interest And Coordinate Frame}{10}{section.1.1}
+\contentsline {section}{\numberline {1.2}Explicitly Correlated Gaussian Functions}{10}{section.1.2}
+\contentsline {section}{\numberline {1.3}General Method Description}{10}{section.1.3}
+\contentsline {chapter}{CHAPTER \numberline {2}BORN-OPPENHEIMER CALCULATIONS}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Shifted Gaussian Functions}{11}{section.2.1}
+\contentsline {section}{\numberline {2.2}Excitation Description}{11}{section.2.2}
+\contentsline {section}{\numberline {2.3}Potential Energy Curve And Properties Calculation}{11}{section.2.3}
+\contentsline {chapter}{CHAPTER \numberline {3}NON-BORN-OPPENHEIMER CALCULATIONS}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}}{12}{section.3.1}
+\contentsline {section}{\numberline {3.2}}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}}{12}{section.3.3}
+\contentsline {chapter}{CHAPTER \numberline {4}PROGRAMMATIC IMPLEMENTATION}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}}{13}{section.4.3}
+\contentsline {chapter}{CHAPTER \numberline {5}FUTURE DIRECTIONS}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Muonic Systems}{14}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ultra Cold Atoms}{14}{section.5.2}
+\contentsline {chapter}{APPENDIX \numberline {A}APPENDIX A: BO Framework Calculations}{15}{appendix.A}
+\contentsline {chapter}{APPENDIX \numberline {B}APPENDIX B: Non-BO Method Development}{53}{appendix.B}
+\contentsline {chapter}{APPENDIX \numberline {C}APPENDIX C: Non-BO Calculations}{173}{appendix.C}
