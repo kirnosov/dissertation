@@ -1,37 +1,34 @@
-\contentsline {chapter}{LIST OF FIGURES}{9}{chapter*.6}
-\contentsline {chapter}{LIST OF TABLES}{10}{chapter*.7}
-\contentsline {chapter}{ABSTRACT}{11}{chapter*.8}
-\contentsline {chapter}{CHAPTER \numberline {1}INTRODUCTION}{12}{chapter.1}
-\contentsline {section}{\numberline {1.1}Systems Of Interest And Coordinate Frame}{12}{section.1.1}
-\contentsline {section}{\numberline {1.2}Explicitly Correlated Gaussian Functions}{12}{section.1.2}
-\contentsline {section}{\numberline {1.3}General Method Description}{12}{section.1.3}
-\contentsline {chapter}{CHAPTER \numberline {2}BORN-OPPENHEIMER CALCULATIONS}{13}{chapter.2}
-\contentsline {section}{\numberline {2.1}Shifted Gaussian Functions}{13}{section.2.1}
-\contentsline {section}{\numberline {2.2}Excitation Description}{13}{section.2.2}
-\contentsline {section}{\numberline {2.3}Potential Energy Curve And Properties Calculation}{13}{section.2.3}
-\contentsline {chapter}{CHAPTER \numberline {3}NON-BORN-OPPENHEIMER CALCULATIONS}{14}{chapter.3}
-\contentsline {section}{\numberline {3.1}}{14}{section.3.1}
-\contentsline {section}{\numberline {3.2}}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}}{14}{section.3.3}
-\contentsline {chapter}{CHAPTER \numberline {4}PROGRAMMATIC IMPLEMENTATION}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}}{15}{section.4.1}
-\contentsline {section}{\numberline {4.2}}{15}{section.4.2}
-\contentsline {section}{\numberline {4.3}}{15}{section.4.3}
-\contentsline {chapter}{CHAPTER \numberline {5}FUTURE DIRECTIONS}{16}{chapter.5}
-\contentsline {section}{\numberline {5.1}Muonic Systems}{16}{section.5.1}
-\contentsline {section}{\numberline {5.2}Ultra Cold Atoms}{16}{section.5.2}
-\contentsline {chapter}{APPENDIX \numberline {A}Analytical energy gradient used in variational Born-Oppenheimer calculations with all-electron explicitly correlated Gaussian functions for molecules containing one $\pi $ electron}{17}{appendix.A}
-\contentsline {chapter}{APPENDIX \numberline {B}Einstein coefficients for rovibrational transitions of the LiH molecule in the ground X$^1 \Sigma ^+$ electronic state}{29}{appendix.B}
-\contentsline {chapter}{APPENDIX \numberline {C}An algorithm for quantum mechanical finite-nuclear-mass variational calculations of atoms with L = 3 using all-electron explicitly correlated Gaussian basis functions}{56}{appendix.C}
-\contentsline {chapter}{APPENDIX \numberline {D}An algorithm for non-Born-Oppenheimer quantum mechanical variational calculations of N = 1 rotationally excited states of diatomic molecules using all-particle explicitly correlated Gaussian functions}{73}{appendix.D}
-\contentsline {chapter}{APPENDIX \numberline {E}Charge asymmetry in rovibrationally excited HD+ determined using explicitly correlated all-particle Gaussian functions}{94}{appendix.E}
-\contentsline {chapter}{APPENDIX \numberline {F}Lifetimes of rovibrational levels of HD$^+$}{103}{appendix.F}
-\contentsline {chapter}{APPENDIX \numberline {G}Charge asymmetry in the rovibrationally excited HD molecule}{109}{appendix.G}
-\contentsline {chapter}{APPENDIX \numberline {H}Charge asymmetry and rovibrational excitations of HD$^+$}{118}{appendix.H}
-\contentsline {chapter}{APPENDIX \numberline {I}Nuclear-nuclear correlation function from non-Born-Oppenheimer calculations of diatomic rovibrational states with total angular momentum equal to two (N=2). Charge asymmetry in HD.}{151}{appendix.I}
-\contentsline {chapter}{APPENDIX \numberline {J}Para–ortho isomerization of H$_2^+$. Non-Born–Oppenheimer direct variational calculations with explicitly correlated all-particle Gaussian functions}{167}{appendix.J}
-\contentsline {chapter}{APPENDIX \numberline {K}Non-Born-Oppenheimer method for direct variational calculations of diatomic first excited rotational states using explicitly correlated all-particle Gaussian functions}{175}{appendix.K}
-\contentsline {chapter}{APPENDIX \numberline {L}Direct non-Born-Oppenheimer variational calculations of all bound vibrational states corresponding to the first rotational excitation of D$_2$ performed with explicitly correlated all-particle Gaussian functions}{180}{appendix.L}
-\contentsline {chapter}{APPENDIX \numberline {M}Ortho–para nuclear-spin isomerization energies for all bound vibrational states of ditritium (T$_2$) from non-Born–Oppenheimer variational calculations performed with explicitly correlated all-particle Gaussian functions}{188}{appendix.M}
-\contentsline {chapter}{APPENDIX \numberline {N}Non-Born–Oppenheimer variational method for calculation of rotationally excited binuclear systems}{196}{appendix.N}
-\contentsline {chapter}{APPENDIX \numberline {O}A comparison of two types of explicitly correlated Gaussian functions for non-Born-Oppenheimer molecular calculations using a model potential}{212}{appendix.O}
+\contentsline {chapter}{LIST OF FIGURES}{7}{chapter*.5}
+\contentsline {chapter}{LIST OF TABLES}{8}{chapter*.6}
+\contentsline {chapter}{ABSTRACT}{9}{chapter*.7}
+\contentsline {chapter}{CHAPTER \numberline {1}INTRODUCTION}{10}{chapter.1}
+\contentsline {section}{\numberline {1.1}Dissertation Structure}{10}{section.1.1}
+\contentsline {section}{\numberline {1.2}Coordinate Frame and Hamiltonian}{11}{section.1.2}
+\contentsline {section}{\numberline {1.3}Explicitly Correlated Gaussian Functions}{13}{section.1.3}
+\contentsline {section}{\numberline {1.4}General Method Description}{15}{section.1.4}
+\contentsline {chapter}{CHAPTER \numberline {2}NON-BORN-OPPENHEIMER CALCULATIONS}{16}{chapter.2}
+\contentsline {section}{\numberline {2.1}Coordinate Frame}{16}{section.2.1}
+\contentsline {section}{\numberline {2.2}}{16}{section.2.2}
+\contentsline {section}{\numberline {2.3}}{16}{section.2.3}
+\contentsline {chapter}{CHAPTER \numberline {3}PROGRAMMATIC IMPLEMENTATION}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}}{17}{section.3.3}
+\contentsline {chapter}{CHAPTER \numberline {4}FUTURE DIRECTIONS}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Muonic Systems}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}Ultra Cold Atoms}{18}{section.4.2}
+\contentsline {chapter}{APPENDIX \numberline {A}Analytical energy gradient used in variational Born-Oppenheimer calculations with all-electron explicitly correlated Gaussian functions for molecules containing one $\pi $ electron}{19}{appendix.A}
+\contentsline {chapter}{APPENDIX \numberline {B}Einstein coefficients for rovibrational transitions of the LiH molecule in the ground X$^1 \Sigma ^+$ electronic state}{31}{appendix.B}
+\contentsline {chapter}{APPENDIX \numberline {C}An algorithm for quantum mechanical finite-nuclear-mass variational calculations of atoms with L = 3 using all-electron explicitly correlated Gaussian basis functions}{58}{appendix.C}
+\contentsline {chapter}{APPENDIX \numberline {D}An algorithm for non-Born-Oppenheimer quantum mechanical variational calculations of N = 1 rotationally excited states of diatomic molecules using all-particle explicitly correlated Gaussian functions}{75}{appendix.D}
+\contentsline {chapter}{APPENDIX \numberline {E}Charge asymmetry in rovibrationally excited HD+ determined using explicitly correlated all-particle Gaussian functions}{96}{appendix.E}
+\contentsline {chapter}{APPENDIX \numberline {F}Lifetimes of rovibrational levels of HD$^+$}{105}{appendix.F}
+\contentsline {chapter}{APPENDIX \numberline {G}Charge asymmetry in the rovibrationally excited HD molecule}{111}{appendix.G}
+\contentsline {chapter}{APPENDIX \numberline {H}Charge asymmetry and rovibrational excitations of HD$^+$}{120}{appendix.H}
+\contentsline {chapter}{APPENDIX \numberline {I}Nuclear-nuclear correlation function from non-Born-Oppenheimer calculations of diatomic rovibrational states with total angular momentum equal to two (N=2). Charge asymmetry in HD.}{153}{appendix.I}
+\contentsline {chapter}{APPENDIX \numberline {J}Para–ortho isomerization of H$_2^+$. Non-Born–Oppenheimer direct variational calculations with explicitly correlated all-particle Gaussian functions}{169}{appendix.J}
+\contentsline {chapter}{APPENDIX \numberline {K}Non-Born-Oppenheimer method for direct variational calculations of diatomic first excited rotational states using explicitly correlated all-particle Gaussian functions}{177}{appendix.K}
+\contentsline {chapter}{APPENDIX \numberline {L}Direct non-Born-Oppenheimer variational calculations of all bound vibrational states corresponding to the first rotational excitation of D$_2$ performed with explicitly correlated all-particle Gaussian functions}{182}{appendix.L}
+\contentsline {chapter}{APPENDIX \numberline {M}Ortho–para nuclear-spin isomerization energies for all bound vibrational states of ditritium (T$_2$) from non-Born–Oppenheimer variational calculations performed with explicitly correlated all-particle Gaussian functions}{190}{appendix.M}
+\contentsline {chapter}{APPENDIX \numberline {N}Non-Born–Oppenheimer variational method for calculation of rotationally excited binuclear systems}{198}{appendix.N}
+\contentsline {chapter}{APPENDIX \numberline {O}A comparison of two types of explicitly correlated Gaussian functions for non-Born-Oppenheimer molecular calculations using a model potential}{214}{appendix.O}

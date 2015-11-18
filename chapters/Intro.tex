@@ -1,17 +1,225 @@
 \chapter{INTRODUCTION\label{chap1}}
 
-\section{Systems Of Interest And Coordinate Frame}
+\section{Dissertation Structure}
+
+This dissertation has an article-based format. All the manuscripts produced
+during the candidacy are included as appendices. While each manuscript is 
+self-contained and self-explanatory, in the context of this dissertation
+they would be addressed as sources of the detailed description and more
+specific analysis. The goal of this dissertation is to provide a reader 
+with good understanding of the method applicability and its' advantages
+and disadvantages in comparison to the other methods used for certain
+classes of problems. 
+
+In this chapter we will consider general approach to the accurate modeling
+of the system wave function with a linear combination of explicitly 
+correlated Gaussian functions (ECG). In order to relief the following 
+chapters from the technical details, most of the mathematical concepts
+are be introduced here. The simplest form of the ECG function is considered
+and its properties are discussed. 
+
+In chapter \ref{nonBO} some applications of this method to 
+various systems with Coulomb interactions (atoms, molecules, $etc.$)
+considered with no Born-Oppenheimer approximation made.
+Modifications needed to be made to the basis function for each class
+of systems are discussed.
+
+Chapter \ref{prog} contains the description of the code used for calculations
+and discusses the nuances of the particular system implementation.
+Moreover, some ways of increasing code performance and decreasing space 
+requirements are considered.
+
+Finally, chapter \ref{future} gives an overview of  the avenues of research 
+opened as a result of the work constituting this dissertation.
+
+\section{Coordinate Frame and Hamiltonian}
+
+A system of $n+1$ particles with masses $M_i$ and charges $Q_i$ can be
+described at any moment of time with $n+1$ coordinate vectors  
+
+\begin{align}
+    R_i &= 
+    \begin{pmatrix}
+           x_i \\           
+           y_i \\
+           z_i
+    \end{pmatrix}
+\end{align}
+
+and $n+1$ momenta vectors
+
+\begin{align}
+    P_i &= 
+    \begin{pmatrix}
+           p_{x,i} \\           
+           p_{y,i} \\
+           p_{z,i}
+    \end{pmatrix}.
+\end{align}
+
+The Hamiltonian operator for this system can be written as 
+
+\begin{equation}
+H = \sum_i^{n+1} \frac{P_i^2}{2M_i} + \sum_{i,j>i}^{n+1} \frac{Q_i Q_j}{R_{ij}},
+\end{equation}
+
+where
+
+\begin{equation}
+R_{ij} = \| R_i - R_j \|.
+\end{equation}
+
+It is easy to see that this laboratory frame Hamiltonian includes the center
+of mass motion. In order to rigorously separate it out, a transformation 
+of the coordinate system should be performed. Instead of considering a system
+as $n+1$ particles with charges $Q_{i+1}$ and masses $M_{i+1}$, we will consider 
+$n$ pseudo-particles with charges $q_i = Q_{i+1}$ and reduced masses 
+$\mu_i = \frac{M_1 M_{i+1}}{M_1 + M_{i+1}}$ moving in the
+central field of the reference particle charge $q_0$. 
+
+Figure \ref{coord} illustrates the transition to the internal coordinate frame which 
+has its center places on one of the particles. Normally for the reference particle
+the most distinguishable (a nucleus in the atom) or the heaviest (deuteron
+in HD$^+$) particle is chosen. The position of that particle with respect to the 
+laboratory Cartesian coordinate frame is described by a vector $r_0 = R_1$,
+and other particles' coordinates are defined with respect to the reference particle:
+$r_i = R_1 - R_{i+1}$.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=150mm]{../pics/coordinates.png}
+\caption[Coordinate frame transformation]{Coordinate frame transformation. \label{coord}}
+\end{center}
+\end{figure}
+
+The internal Hamiltonian of the considered system now becomes
+
+\begin{equation}
+H_{int} = \sum_{i=1}^n \frac{P^{2}_i}{2\mu_i} + \sum_{ i \neq j }^n \frac{P_i P_j}{2 m_0}
++ \sum_{i}^{n} \frac{q_i q_0}{\| r_i \|} + \sum_{i,j>i}^{n} \frac{q_i q_j}{\| r_i - r_j \|}.
+\end{equation}
+
+Substituting 
+
+\begin{align}
+P_i &= \frac{\nabla_{r_i}}{i} \\
+r_{ij} &= r_i - r_j,
+\end{align}
+
+we obtain the final form of the internal Hamiltonian operator:
+
+\begin{equation}
+H_{int} = -\frac{1}{2} \left( \sum_{i=1}^n \frac{\nabla^2_{r_i}}{\mu_i} + \sum_{ i \neq j }^n \frac{\nabla_{r_i} \nabla_{r_j}}{m_0} \right)
++ \sum_{i}^{n} \frac{q_i q_0}{\| r_i \|} + \sum_{i,j>i}^{n} \frac{q_i q_j}{\| r_{ij} \|}.
+\label{intH}
+\end{equation}
+
+It can be seen that the fist term of the internal Hamiltonian describes 
+individual kinetic energies of the particles, while the third and the fourth
+terms are used to take into account the Coulomb interactions between all
+charges in the system. Second term is called a mass-polarization term and
+originates from the choice of the internal coordinate system, which is
+a non-inertial coordinate frame.
+
+This Hamiltonian posses a number of important properties. It 
+\begin{enumerate}
+  \item describes all particles as quantum particles,
+  \item accounts for all interactions,
+  \item provides one-step variational approach,
+  \item reduces problem dimensionality,
+  \item is isotropic.
+\end{enumerate}
+
+It has to be mentioned that this Hamiltonian does not include the description 
+of relativistic effects and thus should be more accurately called non-relativistic
+internal Hamiltonian. The direct inclusion of additional terms to describe
+relativistic as well as other interactions is possible in principle.
+
 
 \section{Explicitly Correlated Gaussian Functions}
 
+Since the Schrodinger equation 
+\begin{equation}
+H \Psi = E \Psi
+\end{equation}
+is insoluble by current standards, we have to find a way
+around this problem.
+
+One possibility is to expand a wave function in a complete 
+set of functions that obey the same boundary conditions:
+\begin{equation}
+\Psi (r) = \sum_k^{\infty} c_k \phi_k(r),
+\end{equation}
+where $c_k$ are the linear expansion coefficients.
+
+Note that in the equation above infinity symbol is used to 
+communicate the completeness; the actual number of basis functions
+does not have to be infinite. Nevertheless, the complete basis
+set is not achievable for many cases and has to be truncated:
+
+\begin{equation}
+\Phi (r) = \sum_k^{K} c_k \phi_k(r).
+\label{wf}
+\end{equation}
+
+The wave function representation (\ref{wf}) can be adequate for
+an accurate description of a relatively simple and confined 
+wave functions with a number of basis functions $K$ being
+relatively small. The degree of completeness of such basis set 
+may be evaluated by variational principle, which states that 
+the expectation value of the Hamiltonian computed with the 
+trial function is higher or equal to the true energy value:
+\begin{equation}
+E = \frac{\expval{H}{\Psi}}{\bra{\Psi}\ket{\Psi}} \leq 
+\frac{\expval{H}{\Phi}}{\bra{\Phi}\ket{\Phi}}
+\label{var_principle}
+\end{equation}
+
+In our work we have chosen to use functions of the following type
+as basis functions:
+\begin{equation}
+\phi_k = \exp \left[ - r' (A_k \otimes I_3) r \right],
+\label{simple_gaussian}
+\end{equation}
+where $r'$ is a row vector of length $3n$ containing pseudo-particles'
+coordinates in an internal coordinate frame ($r'=[x_1,y_1,z_1,...,x_n,y_n,z_n]$)
+and $A_k$ is $n\times n$ symmetric matrix. Since the function (\ref{simple_gaussian})
+must be square-integrable in order to be used for description of the bound states,
+the matrix $A_k$ has to be positive definite. That can be achieved through the use
+of Cholesky factorization $A_k=L_k L_k'$, where $L_k$ is a lower triangular matrix.
+in simplest case, all off-diagonal elements of $A_k$ matrix can be set to zero;
+however, in order to describe the correlation effects between the particles,
+they should also be optimized. The resulting function would contain the correlation
+explicitly and thus be called Explicitly Correlated Gaussian function.
+
+It has to be noticed that according to the Pauli principle, the total wave function
+which includes the spin degrees of freedom of a quantum system must either be symmetric 
+or antisymmetric with respect to permutations of identical particles. 
+Thus, our basis set expansion should take this requirement into account. 
+In variational calculations this puts a constraint on the symmetry of the basis 
+functions that can be used. 
+
+In general, in order to build properly (anti)symmetric wave functions, we have to deal 
+with both the spatial and spin coordinates. Due to the fact that the Hamiltonian of a
+nonrelativistic Coulomb system does not depend on the spin of particles, it is possible 
+to completely eliminate the spin variables from consideration. The projection operators
+$Y$ for irreducible representations of the symmetric group (called Young operators) are 
+obtained from their corresponding Young tableaux. Thus, our properly symmetrized 
+trial wafe function would have the following form:
+\begin{equation}
+\Phi (r) = \sum_k^{K} c_k Y \phi_k(r).
+\label{wf_perm}
+\end{equation}
+
+
+
 \section{General Method Description}
 
-% \begin{figure}
-%\begin{figure}[p!]
-%\begin{center}
-%\includegraphics{figure.eps}
-%\caption[Short figure caption for LOF]{Sample figure caption (to appear below
-%the actual figure). \label{samplefig}}
-%\end{center}
-%\end{figure}
+
+
+
+
+
+
+
 
