@@ -215,11 +215,60 @@ trial wafe function would have the following form:
 
 \section{General Method Description}
 
+All the calculations were performed within the framework of the Ritz variational method. 
+The main idea of the variational method in nonrelativistic quantum mechanics is based on 
+the fact that the expectation value of the Hamiltonian of the system computed with a
+trial wave function is always an upper bound to the exact ground state energy. 
+This general property of the energy functional facilitates a way to obtain very accurate
+approximations to the exact wave function by the optimization of the parameters, 
+both linear and nonlinear, which the function comprises. This optimization is accomplished 
+by the energy minimization. 
 
+Therefore, in order to find the minimum of the Hamiltonian operator expectation value,
+a secular equation 
+\begin{equation}
+Hc = ESc
+\end{equation}
+solution needs to be minimized 
+\begin{equation}
+E = min\frac{c'Hc}{c'Sc}
+\end{equation}
+with respect to both linear and nonlinear parameters constituting basis functions.
 
+In order to perform such minimization, Hamiltonian and overlap matrices need
+to be calculated. The individual matrix elements will be referred to as H$_{kl}$
+and S$_{kl}$, respectively. The following $p$-dimensional Gaussian integral is used 
+most often for this purpose:
+\begin{equation}
+\int_{-\infty}^{+\infty} \exp \left[ - r'Br + v'r \right] = 
+\frac{\pi^{p/2}}{|B|^{1/2}} exp [-v'B^{-1}v].
+\label{integral_general}
+\end{equation}
 
+Therefore, and overlap of simple ECG functions (\ref{simple_gaussian}) would be
+\begin{equation}
+\bra{\phi_k}\ket{\phi_l} = 
+\frac{\pi^{p/2}}{|A_{k}+A_{l}|^{3/2}}.
+\end{equation}
 
+Later on, when we will be considering functions containing a prefactor, 
+a generator function approach will be used. This approach consists in 
+coming up with a generator function which, when differentiated by a 
+parameter, will produce a basis set function. Since a parameter is 
+independent from coordinate variables, it is possible to integrate 
+the generator functions using equation (\ref{integral_general}) and 
+later take a derivative. This approach is described in great detail in
+appendices \ref{apndx3}, \ref{apndx4}, and \ref{apndx14}.
 
-
+A very important aspect of the calculations with ECG functions is that achieving 
+high accuracy is possible only when the nonlinear exponential parameters of basis 
+functions are extensively optimized. This process usually takes large amounts of 
+computer time. To accelerate the basis set optimization in the ECG calculations, 
+analytic energy gradient with respect to the nonlinear parameters can be employed. 
+Evaluating the components of the gradient analytically as opposed to using finite 
+differences of the energy allows to reduce the total number of operations
+and avoid numerical precision issues to a certain extent.
+This procedure is described for different cases in appendices \ref{apndx1}, 
+\ref{apndx4}, and \ref{apndx14}.
 
 
