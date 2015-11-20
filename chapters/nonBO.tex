@@ -1,17 +1,228 @@
 \chapter{NON-BORN-OPPENHEIMER CALCULATIONS\label{nonBO}}
 
-\section{Coordinate Frame}
+In this chapter the author would like to discuss mostly the 
+findings associated with the non-BO calculations of the binuclear
+systems rovibrational spectra. These calculations differ from 
+the non-BO atomic calculations, where the angular momentum 
+excitation description is included with the corresponding 
+spherical harmonic prefactor (see appendix \ref{apndx3} for an
+example for L=3 state calculation, which author was actively 
+involved with), 
+due to the fact that the basis functions have to facilitate the 
+description of the oscillatory nucleus-nucleus density.
+Obviously, the shifted-center ECG functions used by author in
+BO calculations (appendices \ref{apndx1} and \ref{apndx2}) are
+not suitable since they are not eigenfunctions of the total
+angular momentum squared operator.
 
-\section{}
+Fully non-BO ECG calculations for diatomic molecules performed 
+so far only concerned rotationless states, i.e., states represented 
+by spherically symmetric wave functions (\cite{N0_1,N0_2}). 
+In the calculations of those states the ECG function was multiplied 
+by even powers of the internuclear distance, r$_1$ 
+(the powers usually range from 0 to 250):
+\begin{equation}
+\phi_k^{N=0} = r_1^{p_k} \exp [-r'A_k r].
+\label{N0function}
+\end{equation}
+This notation assumes that the internal coordinate frame is placed on a heavier
+nucleus and the pseudoparticle one represents a second nucleus, while remaining
+pseudoparticles have negative charge.
 
-\section{}
+Therefore, function \ref{N0function} preserves spherical symmetry with respect
+to the center of coordinate system while explicitly correlating all pseudoparticles
+in the Gaussian exponent and introducing additional correlation factor for
+the two nuclei. For the ground vibrational state, this additional factor combined 
+with Gaussian exponent can very effectively generate a maximum around the vibrationally
+averaged internuclear distance, thus effectively separating the two nuclei.
+For the higher states, such a prefactor allows efficiently describe multiple node 
+structure of the corresponding wave function.
 
-% \begin{figure}
-%\begin{figure}[p!]
-%\begin{center}
-%\includegraphics{figure.eps}
-%\caption[Short figure caption for LOF]{Sample figure caption (to appear below
-%the actual figure). \label{samplefig}}
-%\end{center}
-%\end{figure}
+Of course, integrals involving function \ref{N0function} are much more complicated 
+than those derived for atomic case. One immediate consequence of that complexity 
+is longer compute time and increasing requirements to programmatic implementation.
+It should be also noted that now the algorithm has to perform not only continuous
+parameters optimization, but also to chose good discrete parameters.
+
+An important and interesting next step for the binuclear systems calculations
+development was to find a way to efficiently include rotational excitation
+in basis function and see what effect does rotational excitation have on
+various expectation values. 
+
+\section{Diatomic Molecules}
+
+In order to describe the rotational excitation of the diatomic molecule,
+a spherical harmonic prefactor can be added to the function \ref{N0function}:
+\begin{eqnarray}
+\phi_k^{N=1} &=& x_1 \cdot r_1^{p_k} \exp [-r'A_k r], \\
+\label{N1function}
+\phi_k^{N=2} &=& (x_1^2 + y_1^2 - 2z_1^2) \cdot r_1^{p_k} \exp [-r'A_k r].
+\label{N2function}
+\end{eqnarray}
+Notice that in the basis functions above we make an assumption that 
+pseudoelectron contributions to the total angular momentum would be 
+negligible. The derivation of matrix elements and gradients for $N$=1
+and $N$=2 is explained in great detail in appendices 
+\ref{apndx4}, \ref{apndx8}, \ref{apndx9}, and \ref{apndx10}.
+
+The effect of the angular excitation prefactor can be visualized
+by the means of nucleus-nucleus correlation function presented 
+in Figure \ref{1d}. In the picture on the left a symmetrically
+symmetric correlation function corresponding to rotationless ($N$=0)
+state is shown. The correlation function on the right corresponds to 
+$N$=1 state and exhibits a dumbbell shape, which is an expected outcome
+since we are using an atom-like Hamiltonian. Figure \ref{1d} also 
+clearly displays an oscillatory behavior of the wave function. 
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=2.5in]{../pics/4_full.png}
+\includegraphics[width=2.5in]{../pics/4n0.png}
+\end{center}
+\caption{\label{1d}  2D correlation function plots for the 
+$\nu$=3 of $N$=0 (on the left) and $N$=1 (on the right) rotational states.}
+\end{figure}
+
+\begin{table}[t]
+\caption{The accuracy of the energy calculations for different
+rovibrational levels of HD$^+$. All values are in cm$^{-1}$.}
+\centering
+\def\arraystretch{1.}
+\setlength{\tabcolsep}{.75em}
+\begin{tabular}{c c c c | c c c c}
+\hline \hline
+v & $N$=0 & $N$=1 & $N$=2 & v & $N$=0 & $N$=1 & $N$=2  \\
+\hline
+0	&	0.00001	&	0.00236	&	0.00690	& 11	&	0.00012	&	0.00177	&	0.00500	\\
+1	&	0.00003	&	0.00233	&	0.00680	& 12	&	0.00087	&	0.00242	&	0.00550	\\
+2	&	0.00000	&	0.00223	&	0.00660	& 13	&	0.00024	&	0.00172	&	0.00470	\\
+3	&	0.00003	&	0.00219	&	0.00640	& 14	&	0.00022	&	0.00171	&	0.00450	\\
+4	&	0.00003	&	0.00213	&	0.00620	& 15	&	0.00087	&	0.00218	&	0.00480	\\
+5	&	0.00005	&	0.00208	&	0.00610	& 16	&	0.00096	&	0.00205	&	0.00240	\\
+6	&	0.00007	&	0.00205	&	0.00590	& 17	&	0.00168	&	0.00256	&	0.00410	\\
+7	&	0.00007	&	0.00199	&	0.00570	& 18	&	0.00158	&	0.00222	&	0.00400	\\
+8	&	0.00022	&	0.00206	&	0.00560	& 19	&	0.00127	&	0.00193	&	0.00350	\\
+9	&	0.00010	&	0.00187	&	0.00540	& 20	&	0.00016	&	0.00071	&	0.00180	\\
+10	&	0.00018	&	0.00189	&	0.00530	& 21	&	0.00047	&	0.00057	&	0.00080	\\
+    &            &           &           & 22	&	0.00004	&	-0.00001	&	     \\
+\hline
+\label{table_energy}
+\end{tabular}
+\end{table}
+
+From the table \ref{table_energy} it can be seen that the energy calculation
+accuracy is decreasing as higher rotational states are considered, but still
+stays on the level of 0.001 cm$^{-1}$ accuracy.
+Relatively high calculation accuracy allowed us to perform a number
+of high quality calculations of full spectra of diatomic molecules
+(see appendices \ref{apndx3} and \ref{apndx8} for HD$^+$ calculations, 
+\ref{apndx10} - for H$_2^+$, \ref{apndx11} - for H$_2$, \ref{apndx12} - 
+for D$_2$, \ref{apndx7} and \ref{apndx9} - for HD), including 
+a unique calculation of T$_2$ (appendix \ref{apndx13}). 
+
+Since the nuclei are treated on equal footing with the electrons in the non-BO approach, 
+the concept of the molecular geometry becomes elusive. The information about the molecular
+structure can be extracted from the wave function as expectation values of the structural
+parameters such as the interparticle distances. It was found (see appendices \ref{apndx5},
+\ref{apndx7}, \ref{apndx8}, and \ref{apndx9}) that the internuclear distance increases
+with rotational excitation. Moreover, charge asymmetry effects for heterogeneous molecules
+also increase along with rotational number. 
+
+While for HD molecule the charge asymmetry is small, for its molecular ion, HD$^+$,
+uneven charge distribution effects are significant. The bond, which is covalent in low
+vibrational levels, becomes purely ionic for top states. In the top $v$ = 22 state the 
+electron is completely shifted from the proton to the deuteron and the average 
+deuteron-electron distance of 1.552 a.u. is very close to its value of 1.500 a.u.
+in the deuterium atom.
+
+The charge asymmetry plays an important role in the interpretation of the results
+obtained for the lifetimes of rotationless levels of HD$^+$. This work (appendix
+\ref{apndx6}) high accuracy results for all vibrationally excited rotationless states 
+were obtained for the first time. The oscillator strength values for the higher
+states were diverging from the predicted pattern, which was a 
+purely nonadiabatic effect arising from the electron localization on the
+deuteron in the top three vibrational states. This effect cannot be described within 
+the Born-Oppenheimer approximation, where the average position of the electron predicted 
+by a calculation where the BO approximation is assumed is always in the middle of the bond. 
+In non-BO calculations, such as the ones carried out in this work, this effect can be
+adequately described. While insignificant for the most states, for the top three states, 
+where the electron is much closer to the deuteron than to the proton, the BO and non-BO oscillation strengths predictions are expected to diverge.
+The charge asymmetry in HD$^+$, which significantly increases in the top two 
+$ν$ = 21 and $ν$ = 22 vibrational states, elongates their lifetime by up to 15$\%$.
+
+\section{Exotic Systems}
+
+After the successful application of the described method to electronic molecules,
+a logical next step was to attempt to describe highly non-adiabatic systems, such
+as muonic molecular ions. 
+
+The attempt was  made to apply the procedure without modification, but, even though 
+for $N$=0 states the agreement with the previous calculations was very good, 
+for the $N$=1 there results were off from the previously reported values by 
+as much as 10$^{−4}$ in muonic atomic units.
+As the inaccuracy of the $N$=1 calculations increased with the increase of the 
+mass of the lightest particle in the system, we attributed it to the deficiency 
+of the ECG basis set used to represent the wave functions of the $N$=1 
+rovibrational states. In the work described in great detail in appendix \ref{14} 
+this deficiency was remedied.
+
+The proper handling of the angular excitations of all particles involved in the 
+system, as well as the coupling of these excitations, not only allowsed us to obtain 
+much more accurate energies of the rovibrational states, but, more importantly,
+opens a possibility of performing accurate calculations of a number of expectation 
+values.
+
+Even though we have been able to obtain quite accurate results for the $N$=1 states 
+of some simple diatomic systems using basis functions \ref{N1function}, the question 
+of the completeness of this set of functions has remained unanswered. The lack of 
+completeness may results from only including in the basis set ECGs with the x$_1$ 
+angular prefactor and not include ECGs with x$_i$, $i$ = 2 ,$...$, $n$ prefactors. 
+For a molecule ECGs with such prefactors would describe the coupling between rotational 
+excitations of the nuclei with excitations where the electrons and not the nuclei 
+are excited to higher angular momentum states. The modified ECGs, which can describe 
+this coupling have the form:
+\begin{equation}
+\phi_k^{(i)} = x_i \cdot r_1^{p_k} \exp [-r'A_k r],
+\label{x_i_finc}
+\end{equation}
+where index $i$ ranges from 1 to the total number of pseudoparticles in the system.
+
+With this modification, the accuracy on the order of 10$^{−12}$ a.u. or better was achieved
+for ground states vibrational states with single rotational excitation of 
+$dp\mu$, $tp\mu$ and $td\mu$ binuclear ions. For the vibrationally exited state 
+of $td\mu$ the difference was up to several 10$^{−11}$ a.u.
+
+The comparison of the dissociation energies of HD$^+$ calculated with the
+inclusion of the basis functions \ref{x_i_finc} to those computed only with 
+functions \ref{N1function} shows that explicit inclusion of angular excitations 
+of the electron leads to a noticeable energy improvement for all states.
+The improvement slowly decreases as the vibrational quantum number increases 
+from 0 to 19 and then rapidly decreases for the three highest states. 
+This behavior can be easily explained when the charge asymmetry in the 
+vibrationally excited HD$^+$ molecular ion is considered.
+As the electron moves closer to the deuteron it also moves closer to the 
+center of mass of the system (i.e., the center of rotation for the molecule). 
+This makes the moment of inertia of the rotating electron smaller and results 
+in less energy being accumulated in its rotation.
+
+Another interesting result of this study was that a contribution of the basis 
+functions with angular prefactor $x_2$ could be directly evaluated.
+For mounic systems the numbers are relatively consistent for all considered systems 
+and range approximately between 25$\%$ and 28$\%$. It is interesting to note that for 
+the system where the first excited ‘vibrational’ state with $N$=1 exists, i.e. $td\mu$, 
+the number of ECGs with the $x_2$ prefactor was somewhat smaller than for the ground vibrational $N$=1 state. This seems to indicate that with the vibrational excitation 
+the muon contribution to the total angular momentum decreases.
+The percentage of $x_2$ functions for HD$^+$ was much smaller (around 7$\%$ on average)
+and was consistent with the energy differences between two calculations.
+For the highest state, were the basis set composed only of functions \ref{N1function}
+did best, the percentage of functions with $x_2$ prefactor was smallest - only 4.8$\%$.  
+
+
+
+
+
+
+
+
+
 

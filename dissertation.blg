@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: chapters/Intro.aux
+A level-1 auxiliary file: chapters/nonBO.aux
+A level-1 auxiliary file: chapters/Program.aux
+A level-1 auxiliary file: chapters/Future.aux
+A level-1 auxiliary file: appendices/appendix_1.aux
+A level-1 auxiliary file: appendices/appendix_2.aux
+A level-1 auxiliary file: appendices/appendix_3.aux
+A level-1 auxiliary file: appendices/appendix_4.aux
+A level-1 auxiliary file: appendices/appendix_5.aux
+A level-1 auxiliary file: appendices/appendix_6.aux
+A level-1 auxiliary file: appendices/appendix_7.aux
+A level-1 auxiliary file: appendices/appendix_8.aux
+A level-1 auxiliary file: appendices/appendix_9.aux
+A level-1 auxiliary file: appendices/appendix_10.aux
+A level-1 auxiliary file: appendices/appendix_11.aux
+A level-1 auxiliary file: appendices/appendix_12.aux
+A level-1 auxiliary file: appendices/appendix_13.aux
+A level-1 auxiliary file: appendices/appendix_14.aux
+A level-1 auxiliary file: appendices/appendix_15.aux
+The style file: uabibnat.bst
+Database file #1: bibliography.bib
+Warning--empty title in N0_2
+Warning--empty title in N0_1
+You've used 2 entries,
+            2827 wiz_defined-function locations,
+            621 strings with 5378 characters,
+and the built_in function-call counts, 1426 in all, are:
+= -- 106
+> -- 62
+< -- 2
++ -- 20
+- -- 18
+* -- 109
+:= -- 200
+add.period$ -- 4
+call.type$ -- 2
+change.case$ -- 14
+chr.to.int$ -- 2
+cite$ -- 4
+duplicate$ -- 118
+empty$ -- 97
+format.name$ -- 24
+if$ -- 287
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 24
+newline$ -- 16
+num.names$ -- 8
+pop$ -- 58
+preamble$ -- 1
+purify$ -- 14
+quote$ -- 0
+skip$ -- 48
+stack$ -- 0
+substring$ -- 57
+swap$ -- 68
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 18
+warning$ -- 2
+while$ -- 10
+width$ -- 0
+write$ -- 29
+(There were 2 warnings)
