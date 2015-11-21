@@ -22,47 +22,51 @@ A level-1 auxiliary file: appendices/appendix_14.aux
 A level-1 auxiliary file: appendices/appendix_15.aux
 The style file: uabibnat.bst
 Database file #1: bibliography.bib
+Warning--empty title in pdt_N1_1
 Warning--empty title in N0_2
 Warning--empty title in N0_1
-You've used 2 entries,
+Warning--empty title in frolov_pdt
+Warning--empty title in pdt_N1_2
+Warning--empty title in Karr
+You've used 6 entries,
             2827 wiz_defined-function locations,
-            621 strings with 5378 characters,
-and the built_in function-call counts, 1426 in all, are:
-= -- 106
-> -- 62
-< -- 2
-+ -- 20
-- -- 18
-* -- 109
-:= -- 200
-add.period$ -- 4
-call.type$ -- 2
-change.case$ -- 14
-chr.to.int$ -- 2
-cite$ -- 4
-duplicate$ -- 118
-empty$ -- 97
-format.name$ -- 24
-if$ -- 287
+            645 strings with 5610 characters,
+and the built_in function-call counts, 4108 in all, are:
+= -- 331
+> -- 139
+< -- 10
++ -- 45
+- -- 39
+* -- 287
+:= -- 551
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 37
+chr.to.int$ -- 6
+cite$ -- 12
+duplicate$ -- 349
+empty$ -- 296
+format.name$ -- 61
+if$ -- 858
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 24
-newline$ -- 16
-num.names$ -- 8
-pop$ -- 58
+missing$ -- 67
+newline$ -- 32
+num.names$ -- 24
+pop$ -- 162
 preamble$ -- 1
-purify$ -- 14
+purify$ -- 37
 quote$ -- 0
-skip$ -- 48
+skip$ -- 167
 stack$ -- 0
-substring$ -- 57
-swap$ -- 68
-text.length$ -- 2
+substring$ -- 201
+swap$ -- 207
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
-warning$ -- 2
-while$ -- 10
+type$ -- 54
+warning$ -- 6
+while$ -- 30
 width$ -- 0
-write$ -- 29
-(There were 2 warnings)
+write$ -- 73
+(There were 6 warnings)

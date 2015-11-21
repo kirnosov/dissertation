@@ -2,6 +2,122 @@
 
 \section{Muonic Systems}
 
-\section{pdt}
+A great advantage of this procedure developed in appendix \ref{apndx14} 
+is that it is applicable to systems with more than three particles. 
+For muon-catalyzed fusion, 
+for example, the system of real interest is an electron attached 
+to the three-body muonic systems treated in that work, 
+or certain six-particle systems involving these four-body systems.
+
+Such calculations should be expected in the nearest future.
+
+\section{$\overline{p}dt$}
+
+Another interesting example to consider is a system where
+the negative particle has a mass of the same order as the
+nuclei (e.g., $\overline{p}dt$). In Table \ref{pdtenergies}
+we demonstrate the results obtained for $N$=0 and $N$=1 
+states with no vibrational excitation. This system is known
+to have only one weekly bound (ground) state 
+(\cite{pdt_N1_1}, \cite{pdt_N1_2}) and can be modeled as a
+$\overline{p}t$ complex polarized by a deuteron \cite{frolov_pdt}.
+
+In our study we considered this system as a Coulomb
+three-body system with unit charges and ignored the 
+strong interactions within the system (which are clearly
+very important for the extraction of the accurate physical data).
+Nevertheless, such calculation is still a viable tool
+to estimate to what extent adiabatic and non-adiabatic effects
+are taken into account and also make conclusions on 
+whether we can expect states to be bound.
+ 
+For $N$=0 level we can compare our results to those obtained
+by \cite{frolov_pdt} with the use of a model potential.
+It can be seen that the value obtained using explicitly 
+correlated Gaussians is lower by \NpdtD  protonic atomic
+units. That should probably be attributed to a better 
+description of the coupling between the particles 
+in the present method than that provided by polarization
+potential in \cite{frolov_pdt}. As for the $N$=1 state,
+it can be compared to the dissociation energy of the
+$\overline{p}dt$ ion, which is easily deduced directly
+from the particles' masses. Our calculation suggests that this
+system is unbound by \N1pdtD protonic a.u., which
+is smaller than the current calculation inaccuracy.
+Unfortunately, insufficient numerical precision 
+does not allow to take the calculation further and show
+the state boundness. 
+
+In future calculations it would be interesting to describe 
+strong interactions between the particles and perform the
+computation with quadruple precision. 
+
+\begin{table}[t]
+\caption[$N$=0 and $N$=1 energies of the $\overline{p}dt$]
+{$N$=0 and $N$=1 energies of the $\overline{p}dt$ expressed in
+protonic atomic units. $N$=0 energy is compared to the value obtained by
+\cite{frolov_pdt}, $N$=1 energy is shown to converge to a value
+just above the dissociation energy of $\overline{p}dt$.  }
+\centering
+\begin{tabular}{r c   r c}
+\hline\hline
+$N$=0	~~&~~		~~&~~	$N$=1	~~&~~		~~\\
+\# of ECGs	~~&~~	Energy	~~&~~	\# of ECGs	~~&~~	Energy	~~\\
+\hline
+500	~~&~~	-0.381\,190\,892\,903 &~~	250	~~&~~	-0.374\,803\,308\,724 \\
+1000	~~&~~	-0.381\,190\,901\,332 &~~	500	~~&~~	-0.374\,803\,346\,392 \\
+1500	~~&~~	-0.381\,190\,901\,991 &~~	750	~~&~~	-0.374\,803\,348\,201 \\
+2000	~~&~~	-0.381\,190\,902\,159 &~~	1000	~~&~~	-0.374\,803\,348\,292 \\
+\hline
+\cite{frolov_pdt}~~&~~-0.381190899644 &~~Diss~~&~~-0.374803348316 \\
+\hline
+\end{tabular}
+\label{pdtenergies}
+\end{table}
 
 \section{Trinuclear systems}
+
+The diatomic basis functions \ref{N0function} can be easily extended 
+to triatomic systems. Such an extension can be achieved by including 
+in the Gaussian premultiplier powers of all internuclear distances. 
+With that the basis functions are
+\begin{equation}
+\phi_k = r_1^{2m_k} r_2^{2n_k} r_{12}^{2p_k} \exp [r'(A_k \otimes I_3) r],
+\label{3_1}
+\end{equation}
+where $r_1$ is the distance between the reference nucleus and
+nucleus 2, $r_2$ is the distance between the reference nucleus and nucleus 3, 
+and $r_{12}$ is the distance between nuclei 2 and 3. 
+These functions should be good basis functions for expanding wave functions 
+of rotationless (i.e., pure vibrational) states of triatomic systems with 
+$\sigma$ electrons, for example, H$_3^+$ , H$_3$, or LiH$_2$. 
+They should be able to effectively describe the three types of correlations, 
+i.e., the electron-electron, nucleus-nucleus, and nucleus-electron correlations 
+in the non-BO calculation.
+
+However, the test calculations showed that the algorithms are not numerically 
+stable because they involve oscillating series with finite number of elements 
+whose values are large but have opposite signs. We have not been able to overcome 
+this problem yet and thus this line of the development is presently on hold. 
+In mean time, we have been searching for other alternative types of basis functions 
+for use in triatomic non-BO calculations.
+
+One type of functions which can potentially be effective in expanding non-BO 
+triatomic wave functions are all-particle Gaussians multiplied by $sin$ and $cos$ 
+functions dependent on squares of the internuclear distances:
+\begin{equation}
+\phi_k = f_1(a_1^k r_1^2 ) f_2(a_2^k r_2^2 ) f_{12}(a_{12}^k r_{12}^2 ) 
+\exp [r'(A_k \otimes I_3) r],
+\label{3_2}
+\end{equation}
+where $f_1(a_1^k r_1^2 )$ is either $sin(a_1^k r_1^2 )$ or $cos(a_1^k r_1^2 )$ 
+and $f_2$ and $f_{12}$ having analogical forms.
+
+That type of functions was tested in the calculations of bound pure vibrational 
+states of a diatomic system with the interaction of the nuclei represented by a 
+Morse potential. The test shows that, even though it takes more sin/cos-Gaussians 
+than $r^m$-Gaussians to achieve similar precision of the energy, the former functions 
+can effectively describe the vibrational states. Future work will involve implementation 
+and testing of the sin/cos-Gaussians in all-particle non-BO calculations of the pure
+vibrational states of diatomic systems. 
+Subsequently, some small triatomics (e.g., H$_3^+$) will also be studied.

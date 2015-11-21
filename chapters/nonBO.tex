@@ -22,7 +22,7 @@ In the calculations of those states the ECG function was multiplied
 by even powers of the internuclear distance, r$_1$ 
 (the powers usually range from 0 to 250):
 \begin{equation}
-\phi_k^{N=0} = r_1^{p_k} \exp [-r'A_k r].
+\phi_k^{N=0} = r_1^{p_k} \exp [-r'(A_k \otimes I_3) r].
 \label{N0function}
 \end{equation}
 This notation assumes that the internal coordinate frame is placed on a heavier
@@ -54,9 +54,9 @@ various expectation values.
 In order to describe the rotational excitation of the diatomic molecule,
 a spherical harmonic prefactor can be added to the function \ref{N0function}:
 \begin{eqnarray}
-\phi_k^{N=1} &=& x_1 \cdot r_1^{p_k} \exp [-r'A_k r], \\
+\phi_k^{N=1} &=& x_1 \cdot r_1^{p_k} \exp [-r'(A_k \otimes I_3) r], \\
 \label{N1function}
-\phi_k^{N=2} &=& (x_1^2 + y_1^2 - 2z_1^2) \cdot r_1^{p_k} \exp [-r'A_k r].
+\phi_k^{N=2} &=& (x_1^2 + y_1^2 - 2z_1^2) \cdot r_1^{p_k} \exp [-r'(A_k \otimes I_3) r].
 \label{N2function}
 \end{eqnarray}
 Notice that in the basis functions above we make an assumption that 
@@ -88,7 +88,9 @@ $\nu$=3 of $N$=0 (on the left) and $N$=1 (on the right) rotational states.}
 calculations for different
 rovibrational levels of HD$^+$]{The accuracy of the energy 
 calculations for different
-rovibrational levels of HD$^+$. All values are in cm$^{-1}$.}
+rovibrational levels of HD$^+$
+calculated as a deviation from the results \cite{Karr}. 
+All values are in cm$^{-1}$.}
 \centering
 \def\arraystretch{1.}
 \setlength{\tabcolsep}{.75em}
@@ -185,7 +187,7 @@ excitations of the nuclei with excitations where the electrons and not the nucle
 are excited to higher angular momentum states. The modified ECGs, which can describe 
 this coupling have the form:
 \begin{equation}
-\phi_k^{(i)} = x_i \cdot r_1^{p_k} \exp [-r'A_k r],
+\phi_k^{(i)} = x_i \cdot r_1^{p_k} \exp [-r'(A_k \otimes I_3) r],
 \label{x_i_finc}
 \end{equation}
 where index $i$ ranges from 1 to the total number of pseudoparticles in the system.

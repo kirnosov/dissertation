@@ -1,10 +1,14 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{6}
 \addcontentsline{toc}{chapter}{\bibname}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem[{{Bishop} and {Frolov}(1995)}]{pdt_N1_1}
+{Bishop}, D. and A.~{Frolov} (1995).
+\newblock \emph{Phys. Rev. A}, \textbf{51}, p. 3636.
 
 \bibitem[{{Bubin} et~al.(2005){Bubin}, {Cafiero}, and {Adamowicz}}]{N0_2}
 {Bubin}, S., M.~{Cafiero}, and L.~{Adamowicz} (2005).
@@ -13,5 +17,17 @@
 \bibitem[{{Cafiero} et~al.(2003){Cafiero}, {Bubin}, and {Adamowicz}}]{N0_1}
 {Cafiero}, M., S.~{Bubin}, and L.~{Adamowicz} (2003).
 \newblock \emph{Phys. Chem. Chem. Phys.}, \textbf{5}, p. 1491.
+
+\bibitem[{{Frolov}(2013)}]{frolov_pdt}
+{Frolov}, A. (2013).
+\newblock \emph{J. Phys. B: At. Mol. Opt. Phys.}, \textbf{46}, p. 125001.
+
+\bibitem[{{Frolov} and {Thakkar}(1992)}]{pdt_N1_2}
+{Frolov}, A. and A.~{Thakkar} (1992).
+\newblock \emph{Phys. Rev. A}, \textbf{46}, p. 4418.
+
+\bibitem[{{Karr} and {Hilico}(2006)}]{Karr}
+{Karr}, J. and L.~{Hilico} (2006).
+\newblock \emph{J. Phys. B: At. Mol. Opt. Phys.}, \textbf{39}, p. 104107.
 
 \end{thebibliography}
