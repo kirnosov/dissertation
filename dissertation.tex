@@ -28,6 +28,7 @@
 % Package Usage
 % These are the packages that we need
 \usepackage{pdfpages}
+\usepackage{listings}
 \usepackage{amsmath}
 \usepackage{physics}
 \usepackage{float}
@@ -125,6 +126,13 @@ Explicitly Correlated Gaussian Functions}
 \include{chapters/Program}
 \include{chapters/Future}
 
+% Switch the spacing to single-spaced for the references
+\renewcommand{\baselinestretch}{1}		% chaning the value
+\small\normalsize						% switch size to make the value take
+% Create the References list
+\bibliographystyle{uabibnat}
+\bibliography{bibliography}
+
 % Include the various appendices
 \appendix
 \include{appendices/appendix_1}
@@ -143,17 +151,9 @@ Explicitly Correlated Gaussian Functions}
 \include{appendices/appendix_14}
 \include{appendices/appendix_15}
 
-
-% Switch the spacing to single-spaced for the references
-\renewcommand{\baselinestretch}{1}		% chaning the value
-\small\normalsize						% switch size to make the value take
-
 % this is how pdf documents can be included
 %\includepdf[pages=-]{"../papers/H2"}
 %\includepdf[pages=-]{"../papers/D2"}
 
-% Create the References list
-\bibliographystyle{uabibnat}
-\bibliography{bibliography}
 
 \end{document}
