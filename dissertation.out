@@ -10,12 +10,12 @@
 \BOOKMARK [1][-]{section.2.1}{Diatomic Molecules}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Exotic Systems}{chapter.2}% 11
 \BOOKMARK [0][-]{chapter.3}{CHAPTER PROGRAMMATIC IMPLEMENTATION}{}% 12
-\BOOKMARK [1][-]{section.3.1}{}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{}{chapter.3}% 15
-\BOOKMARK [0][-]{chapter.4}{CHAPTER FUTURE DIRECTIONS}{}% 16
-\BOOKMARK [1][-]{section.4.1}{Muonic Systems}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.2}{Ultra Cold Atoms}{chapter.4}% 18
+\BOOKMARK [1][-]{section.3.1}{Program Structure}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Performance Considerations}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{CHAPTER FUTURE DIRECTIONS}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Muonic Systems}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{pdt}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.3}{Trinuclear systems}{chapter.4}% 18
 \BOOKMARK [0][-]{appendix.A}{APPENDIX Analytical energy gradient used in variational Born-Oppenheimer calculations with all-electron explicitly correlated Gaussian functions for molecules containing one \040electron}{}% 19
 \BOOKMARK [0][-]{appendix.B}{APPENDIX Einstein coefficients for rovibrational transitions of the LiH molecule in the ground X1 + electronic state}{}% 20
 \BOOKMARK [0][-]{appendix.C}{APPENDIX An algorithm for quantum mechanical finite-nuclear-mass variational calculations of atoms with L = 3 using all-electron explicitly correlated Gaussian basis functions}{}% 21

@@ -1,17 +1,98 @@
 \chapter{PROGRAMMATIC IMPLEMENTATION\label{prog}}
 
-\section{}
+\section{Program Structure}
 
-\section{}
+The algorithm of obtaining high accuracy wave functions
+in the ECG basis set using analytic energy gradient
+uses variational principle (\ref{var_principle})
+and minimizes functional \ref{functional}.
+The structure of the program is shown in Figure \ref{codeflow}.
+The presented example has the specifications of non-BO calculation,
+but it should be mentioned that the same program structure can be 
+utilized for BO calculations with minor input modifications
+(exclude masses, include molecular geometry). 
 
-\section{}
+After the program initialization the system specifications
+are read in. At this step particle masses need to be 
+converted into the pseudoparticle reduced mass matrix,
+charges should be stored properly, and a set of 
+permutation operators must be constructed from the
+symmetry operator.
 
-% \begin{figure}
-%\begin{figure}[p!]
-%\begin{center}
-%\includegraphics{figure.eps}
-%\caption[Short figure caption for LOF]{Sample figure caption (to appear below
-%the actual figure). \label{samplefig}}
-%\end{center}
-%\end{figure}
+Since the code is expected to be restarted multiple times
+due to computer availability constraints and possible
+failures, the current trial wave function expansion
+is also stored in the input file. After the system
+initialization the basis set can be read in, and 
+Hamiltonian and overlap matrices should be computed.
+In the next step, secular equation \ref{secular_equation}
+needs to be solved to obtain linear expansion coefficients.
+
+After the program processes all the provided data, 
+so-called basis building and optimization program (BBOP)
+starts. Despite the name, it can contain directives to
+calculate single point expectation values and/or perform
+various types of the basis set analyses.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=140mm]{../pics/CodeFlow.png}
+\caption[Code Flowchart]{Code Flowchart. \label{codeflow}}
+\end{center}
+\end{figure}
+
+The core of the algorithm is an optimization routine.
+The user is free to chose different optimization regimes,
+which have their advantages and disadvantages. The most
+popular choice is to optimize one basis function at a time
+and perform several optimization cycles on a given basis
+set. In general, any subset of parameters may be chosen for 
+optimization. The optimization is driven by 
+Newton-Raphson optimization routine, which makes multiple
+calls to matrix elements and gradients calculation 
+functions.
+
+After the existing basis set is sufficiently optimized, 
+new basis functions can be added. One of the possible 
+ways to generate it is to perturb the most contributing
+function of the existing basis set. After the consecutive
+optimization, this function can be added to the basis set.
+
+\section{Performance Considerations}
+
+An immediate observation one can make is that matrix elements
+and gradients calculations performed multiple times and are
+independent. For that reason a workload can be split between 
+the multiple processors and calculations can be performed 
+in parallel. 
+
+In sight of the constantly changing computer architecture 
+solutions a choice was made in favor of the code portability.
+In a simple yet efficient approach communication between
+processes is handled by means of Message Passing Interface (MPI).
+The up-to-date basis set is maintained and
+a copy of the calculated matrix is created on each processor.
+After all the processes finish, the individual matrices are merged
+on the master process.
+
+It has to be noted that since shared memory solutions become 
+available, the number of MPI processes can be reduced in favor 
+of OpenMP threads. Such approach, while unlikely to result 
+in calculation speed increase, would allow to limit memory 
+usage and should be considered for the calculations where
+basis set size approaches 15,000 functions.
+
+Another aspect which would allow to increase the speed of individual
+matrix element / gradient calculation would be to specify the system
+parameters at the compile time. Providing compiler with the information
+about exact matrix dimensions would allow to avoid dynamic memory
+allocation, speed up functions invocation and improve in-function
+caching. A way to do that is to start the code execution by 
+running a Python script which reads an input file, updates 
+settings file with the system of interest specifications,
+recompiles the code and submits the job.
+
+
+
+
 
