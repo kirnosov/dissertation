@@ -32,3 +32,4 @@
 \contentsline {chapter}{APPENDIX \numberline {M}Ortho-para nuclear-spin isomerization energies for all bound vibrational states of ditritium (T$_2$) from non-Born–Oppenheimer variational calculations}{203}{appendix.M}
 \contentsline {chapter}{APPENDIX \numberline {N}Non-Born–Oppenheimer variational method for calculation of rotationally excited binuclear systems}{211}{appendix.N}
 \contentsline {chapter}{APPENDIX \numberline {O}A comparison of two types of explicitly correlated Gaussian functions for non-Born-Oppenheimer molecular calculations using a model potential}{227}{appendix.O}
+\contentsline {chapter}{APPENDIX \numberline {P}Permissions}{236}{appendix.P}

@@ -11,26 +11,28 @@ with good understanding of the method applicability and its' advantages
 and disadvantages in comparison to the other methods used for certain
 classes of problems. 
 
-In this chapter we will consider general approach to the accurate modeling
+In this chapter we will consider a general approach for accurate modeling
 of the system wave function with a linear combination of explicitly 
-correlated Gaussian functions (ECG). In order to relief the following 
+correlated Gaussian functions (ECG).
+In this approach the Born-Oppenheimer approximation is not assumed.
+In order to relief the following 
 chapters from the technical details, most of the mathematical concepts
-are be introduced here. The simplest form of the ECG function is considered
+are introduced here. The simplest form of the ECG function is considered
 and its properties are discussed. 
 
-In chapter \ref{nonBO} some applications of this method to 
+In chapter \ref{nonBO} some applications of the approach to 
 various systems with Coulomb interactions (atoms, molecules, $etc.$)
-considered with no Born-Oppenheimer approximation made.
-Modifications needed to be made to the basis function for each class
+are described.
+Modifications that need to be made to the basis function for each class
 of systems are discussed.
 
-Chapter \ref{prog} contains the description of the code used for calculations
-and discusses the nuances of the particular system implementation.
+Chapter \ref{prog} contains the description of the code used in the calculations
+and discusses the nuances of the approach to each specific system implementation.
 Moreover, some ways of increasing code performance and decreasing space 
 requirements are considered.
 
-Finally, chapter \ref{future} gives an overview of  the avenues of research 
-opened as a result of the work constituting this dissertation.
+Finally, chapter \ref{future} gives an overview of some avenues of research 
+opened as a result of the work described in this dissertation.
 
 \section{Coordinate Frame and Hamiltonian}
 
@@ -71,19 +73,20 @@ R_{ij} = \| R_i - R_j \|.
 
 It is easy to see that this laboratory frame Hamiltonian includes the center
 of mass motion. In order to rigorously separate it out, a transformation 
-of the coordinate system should be performed. Instead of considering a system
-as $n+1$ particles with charges $Q_{i+1}$ and masses $M_{i+1}$, we will consider 
-$n$ pseudo-particles with charges $q_i = Q_{i+1}$ and reduced masses 
+of the coordinate system is performed. The transformation reduces the system
+of $n+1$ particles with charges $Q_{i+1}$ and masses $M_{i+1}$, to an 
+$n$ pseudo-particle system with charges $q_i = Q_{i+1}$ and reduced masses 
 $\mu_i = \frac{M_1 M_{i+1}}{M_1 + M_{i+1}}$ moving in the
-central field of the reference particle charge $q_0$. 
+central field of the reference particle charge $q_0$. The mass of the
+reference particle will be referred to as $m_0$.
 
 Figure \ref{coord} illustrates the transition to the internal coordinate frame which 
 has its center places on one of the particles. Normally for the reference particle
 the most distinguishable (a nucleus in the atom) or the heaviest (deuteron
 in HD$^+$) particle is chosen. The position of that particle with respect to the 
-laboratory Cartesian coordinate frame is described by a vector $r_0 = R_1$,
+laboratory Cartesian coordinate frame is described by the vector $R_1$,
 and other particles' coordinates are defined with respect to the reference particle:
-$r_i = R_1 - R_{i+1}$.
+$r_i = R_{i+1} - R_1$.
 
 \begin{figure}[H]
 \begin{center}
@@ -92,7 +95,7 @@ $r_i = R_1 - R_{i+1}$.
 \end{center}
 \end{figure}
 
-The internal Hamiltonian of the considered system now becomes
+The internal Hamiltonian of the considered system now becomes:
 
 \begin{equation}
 H_{int} = \sum_{i=1}^n \frac{P^{2}_i}{2\mu_i} + \sum_{ i \neq j }^n \frac{P_i P_j}{2 m_0}
@@ -103,7 +106,7 @@ Substituting
 
 \begin{align}
 P_i &= \frac{\nabla_{r_i}}{i} \\
-r_{ij} &= r_i - r_j,
+r_{ij} &= r_j - r_i,
 \end{align}
 
 we obtain the final form of the internal Hamiltonian operator:
@@ -133,7 +136,7 @@ This Hamiltonian posses a number of important properties. It
 It has to be mentioned that this Hamiltonian does not include the description 
 of relativistic effects and thus should be more accurately called non-relativistic
 internal Hamiltonian. The direct inclusion of additional terms to describe
-relativistic as well as other interactions is possible in principle.
+relativistic ,as well as other interactions, is possible in principle.
 
 
 \section{Explicitly Correlated Gaussian Functions}
@@ -146,16 +149,18 @@ is insoluble by current standards, we have to find a way
 around this problem.
 
 One possibility is to expand a wave function in a complete 
-set of functions that obey the same boundary conditions:
+set of functions that obey the same boundary conditions
+as the wave function:
 \begin{equation}
 \Psi (r) = \sum_k^{\infty} c_k \phi_k(r),
 \end{equation}
 where $c_k$ are the linear expansion coefficients.
 
-Note that in the equation above infinity symbol is used to 
+Note that in the equation above the infinity symbol is used to 
 communicate the completeness; the actual number of basis functions
 does not have to be infinite. Nevertheless, the complete basis
-set is not achievable for many cases and has to be truncated:
+set is not achievable for most cases and in practical calculations 
+has to be truncated:
 
 \begin{equation}
 \Phi (r) = \sum_k^{K} c_k \phi_k(r).
@@ -175,29 +180,29 @@ E = \frac{\expval{H}{\Psi}}{\bra{\Psi}\ket{\Psi}} \leq
 \label{var_principle}
 \end{equation}
 
-In our work we have chosen to use functions of the following type
-as basis functions:
+In our work we have chosen to use the Gaussian functions 
+of the following type as basis functions:
 \begin{equation}
 \phi_k = \exp \left[ - r' (A_k \otimes I_3) r \right],
 \label{simple_gaussian}
 \end{equation}
-where $r'$ is a row vector of length $3n$ containing pseudo-particles'
+where $r$ is a vector of length $3n$ containing pseudo-particles'
 coordinates in an internal coordinate frame ($r'=[x_1,y_1,z_1,...,x_n,y_n,z_n]$)
 and $A_k$ is $n\times n$ symmetric matrix. Since the function (\ref{simple_gaussian})
-must be square-integrable in order to be used for description of the bound states,
+must be square-integrable in order to be used for description of a bound state,
 the matrix $A_k$ has to be positive definite. That can be achieved through the use
 of Cholesky factorization $A_k=L_k L_k'$, where $L_k$ is a lower triangular matrix.
-in simplest case, all off-diagonal elements of $A_k$ matrix can be set to zero;
+In the simplest case, all off-diagonal elements of $A_k$ matrix can be set to zero;
 however, in order to describe the correlation effects between the particles,
-they should also be optimized. The resulting function would contain the correlation
-explicitly and thus be called Explicitly Correlated Gaussian function.
+they should also be non-zero. The resulting functions contain the correlation
+explicitly and thus they are called Explicitly Correlated Gaussian functions.
 
 It has to be noticed that according to the Pauli principle, the total wave function
 which includes the spin degrees of freedom of a quantum system must either be symmetric 
 or antisymmetric with respect to permutations of identical particles. 
-Thus, our basis set expansion should take this requirement into account. 
-In variational calculations this puts a constraint on the symmetry of the basis 
-functions that can be used. 
+Thus, our basis set expansion should incorporate this requirement. 
+This puts a constraint on the symmetry of the basis 
+functions that are used. 
 
 In general, in order to build properly (anti)symmetric wave functions, we have to deal 
 with both the spatial and spin coordinates. Due to the fact that the Hamiltonian of a
@@ -205,7 +210,7 @@ nonrelativistic Coulomb system does not depend on the spin of particles, it is p
 to completely eliminate the spin variables from consideration. The projection operators
 $Y$ for irreducible representations of the symmetric group (called Young operators) are 
 obtained from their corresponding Young tableaux. Thus, our properly symmetrized 
-trial wafe function would have the following form:
+trial wave function has the following form:
 \begin{equation}
 \Phi (r) = \sum_k^{K} c_k Y \phi_k(r).
 \label{wf_perm}
@@ -215,8 +220,10 @@ trial wafe function would have the following form:
 
 \section{General Method Description}
 
-All the calculations were performed within the framework of the Ritz variational method. 
-The main idea of the variational method in nonrelativistic quantum mechanics is based on 
+All the calculations have been performed within the framework of the 
+Ritz variational method. 
+The main idea of the variational method in the nonrelativistic 
+quantum mechanics is based on 
 the fact that the expectation value of the Hamiltonian of the system computed with a
 trial wave function is always an upper bound to the exact ground state energy. 
 This general property of the energy functional facilitates a way to obtain very accurate
@@ -230,14 +237,15 @@ a secular equation
 Hc = ESc
 \label{secular_equation}
 \end{equation}
-solution needs to be minimized 
+needs to be solved and energy functional 
 \begin{equation}
 E = min\frac{c'Hc}{c'Sc}
 \label{functional}
 \end{equation}
-with respect to both linear and nonlinear parameters constituting basis functions.
+needs to be minimized with respect to the nonlinear parameters 
+constituting basis functions.
 
-In order to perform such minimization, Hamiltonian and overlap matrices need
+In order to perform such minimization, the Hamiltonian and overlap matrices need
 to be calculated. The individual matrix elements will be referred to as H$_{kl}$
 and S$_{kl}$, respectively. The following $p$-dimensional Gaussian integral is used 
 most often for this purpose:
@@ -253,24 +261,25 @@ Therefore, and overlap of simple ECG functions (\ref{simple_gaussian}) would be
 \frac{\pi^{p/2}}{|A_{k}+A_{l}|^{3/2}}.
 \end{equation}
 
-Later on, when we will be considering functions containing a prefactor, 
-a generator function approach will be used. This approach consists in 
-coming up with a generator function which, when differentiated by a 
-parameter, will produce a basis set function. Since a parameter is 
-independent from coordinate variables, it is possible to integrate 
+Later on, when we consider functions containing a prefactor, 
+a generator function approach will be used. This approach involves
+selecting a generator function which, when differentiated with respect to a 
+parameter, produces the basis function with the prefactor. Since the parameter is 
+independent on the coordinate variables, it is possible to integrate 
 the generator functions using equation (\ref{integral_general}) and 
-later take a derivative. This approach is described in great detail in
+later take the derivative. This approach is described in details in
 appendices \ref{apndx3}, \ref{apndx4}, and \ref{apndx14}.
 
 A very important aspect of the calculations with ECG functions is that achieving 
 high accuracy is possible only when the nonlinear exponential parameters of basis 
 functions are extensively optimized. This process usually takes large amounts of 
 computer time. To accelerate the basis set optimization in the ECG calculations, 
-analytic energy gradient with respect to the nonlinear parameters can be employed. 
+the analytic energy gradient determined with respect to the nonlinear parameters 
+is employed. 
 Evaluating the components of the gradient analytically as opposed to using finite 
 differences of the energy allows to reduce the total number of operations
 and avoid numerical precision issues to a certain extent.
-This procedure is described for different cases in appendices \ref{apndx1}, 
-\ref{apndx4}, and \ref{apndx14}.
+This procedure for calculating the gradient is described for different cases 
+in appendices \ref{apndx1}, \ref{apndx4}, and \ref{apndx14}.
 
 

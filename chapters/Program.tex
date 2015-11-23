@@ -2,12 +2,12 @@
 
 \section{Program Structure}
 
-The algorithm of obtaining high accuracy wave functions
+The algorithm for obtaining high accuracy wave functions
 in the ECG basis set using analytic energy gradient
 uses variational principle (\ref{var_principle})
 and minimizes functional \ref{functional}.
 The structure of the program is shown in Figure \ref{codeflow}.
-The presented example has the specifications of non-BO calculation,
+The presented example refers to non-BO calculation,
 but it should be mentioned that the same program structure can be 
 utilized for BO calculations with minor input modifications
 (exclude masses, include molecular geometry). 
@@ -42,7 +42,7 @@ various types of the basis set analyses.
 \end{figure}
 
 The core of the algorithm is an optimization routine.
-The user is free to chose different optimization regimes,
+The user can choose different optimization regimes,
 which have their advantages and disadvantages. The most
 popular choice is to optimize one basis function at a time
 and perform several optimization cycles on a given basis
@@ -56,7 +56,7 @@ After the existing basis set is sufficiently optimized,
 new basis functions can be added. One of the possible 
 ways to generate it is to perturb the most contributing
 function of the existing basis set. After the consecutive
-optimization, this function can be added to the basis set.
+optimization, this function is added to the basis set.
 
 \section{Performance Considerations}
 
@@ -72,10 +72,11 @@ In a simple yet efficient approach communication between
 processes is handled by means of Message Passing Interface (MPI).
 The up-to-date basis set is maintained and
 a copy of the calculated matrix is created on each processor.
-After all the processes finish, the individual matrices are merged
+After all the processes finish their work, 
+the individual matrices are merged
 on the master process.
 
-It has to be noted that since shared memory solutions become 
+It has to be noted that as shared memory solutions become more 
 available, the number of MPI processes can be reduced in favor 
 of OpenMP threads. Such approach, while unlikely to result 
 in calculation speed increase, would allow to limit memory 
